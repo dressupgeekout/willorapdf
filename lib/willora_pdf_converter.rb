@@ -13,7 +13,7 @@ class WilloraPDFConverter < Asciidoctor::Converter.for('pdf')
   # font. (The default thematic break draws a horizontal rule.)
   def convert_thematic_break(node)
     theme_margin(:thematic_break, :top)
-    move_down(theme.base_font_size)
+    ink_prose("*" + "&nbsp;"*10 + "*" + "&nbsp;"*10 + "*", align: :center, margin: theme.base_font_size/2)
     theme_margin(:thematic_break, ((block_next = next_enclosed_block node) ? :bottom : :top), block_next || true)
   end
 end
